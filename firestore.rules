@@ -1,0 +1,14 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Jobs are publicly readable (job board is public),
+    // but only the authenticated admin account may create/update/delete.
+    match /jobs/{jobId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null
+        && request.auth.token.email == "REPLACE_WITH_YOUR_ADMIN_EMAIL";
+    }
+  }
+}
