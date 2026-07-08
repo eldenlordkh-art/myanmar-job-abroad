@@ -29,7 +29,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Contact</h3>
             <ul className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-400">
               <li>Yangon, Myanmar</li>
-              <li>hello@myanmarjobs.example</li>
+              <li>thazinpwintthu.tzpt@gmail.com</li>
               <li>+95 9 000 000 000</li>
             </ul>
           </div>
