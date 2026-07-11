@@ -16,6 +16,12 @@ import { Job, JobInput } from "./types";
 
 const JOBS_COLLECTION = "jobs";
 
+function stripUndefined<T extends Record<string, unknown>>(obj: T): T {
+  return Object.fromEntries(
+    Object.entries(obj).filter(([, v]) => v !== undefined)
+  ) as T;
+}
+
 function toJob(id: string, data: any): Job {
   return {
     id,
@@ -67,7 +73,7 @@ export async function getJobById(id: string): Promise<Job | null> {
 
 export async function createJob(input: JobInput): Promise<string> {
   const ref = await addDoc(collection(db, JOBS_COLLECTION), {
-    ...input,
+    ...stripUndefined(input),
     createdAt: Date.now(),
     updatedAt: Date.now()
   });
@@ -76,7 +82,7 @@ export async function createJob(input: JobInput): Promise<string> {
 
 export async function updateJob(id: string, input: Partial<JobInput>): Promise<void> {
   const ref = doc(db, JOBS_COLLECTION, id);
-  await updateDoc(ref, { ...input, updatedAt: Date.now() });
+  await updateDoc(ref, { ...stripUndefined(input), updatedAt: Date.now() });
 }
 
 export async function deleteJob(id: string): Promise<void> {

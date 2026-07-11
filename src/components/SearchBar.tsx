@@ -34,11 +34,11 @@ export default function SearchBar({
   return (
     <form
       onSubmit={handleSubmit}
-      className={`flex w-full flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:flex-row sm:items-center ${
-        variant === "hero" ? "shadow-lg" : ""
+      className={`w-full rounded-2xl border border-slate-200 bg-white p-3 shadow-sm transition focus-within:border-brand-300 dark:border-slate-800 dark:bg-brand-950 ${
+        variant === "hero" ? "shadow-xl shadow-brand-900/5" : ""
       }`}
     >
-      <div className="flex flex-1 items-center gap-2 px-2">
+      <div className="flex items-center gap-2 border-b border-slate-100 px-2 pb-2 dark:border-slate-800">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-slate-400">
           <circle cx="11" cy="11" r="7" />
           <path d="M21 21l-4.35-4.35" strokeLinecap="round" />
@@ -47,42 +47,42 @@ export default function SearchBar({
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Job title or keyword"
-          className="w-full bg-transparent py-2 text-sm text-slate-900 outline-none placeholder:text-slate-400 dark:text-white"
+          className="w-full bg-transparent py-1.5 text-sm text-slate-900 outline-none placeholder:text-slate-400 dark:text-white"
         />
       </div>
 
-      <div className="hidden h-8 w-px bg-slate-200 dark:bg-slate-700 sm:block" />
+      <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center">
+        <select
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          className="w-full min-w-0 rounded-lg bg-transparent px-2 py-2 text-sm text-slate-700 outline-none dark:text-slate-200 sm:flex-1"
+        >
+          <option value="">All locations</option>
+          {JOB_LOCATIONS.map((loc) => (
+            <option key={loc} value={loc}>{loc}</option>
+          ))}
+        </select>
 
-      <select
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        className="w-full rounded-lg bg-transparent px-2 py-2 text-sm text-slate-700 outline-none dark:text-slate-200 sm:w-44"
-      >
-        <option value="">All locations</option>
-        {JOB_LOCATIONS.map((loc) => (
-          <option key={loc} value={loc}>{loc}</option>
-        ))}
-      </select>
+        <div className="hidden h-8 w-px bg-slate-200 dark:bg-slate-700 sm:block" />
 
-      <div className="hidden h-8 w-px bg-slate-200 dark:bg-slate-700 sm:block" />
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="w-full min-w-0 rounded-lg bg-transparent px-2 py-2 text-sm text-slate-700 outline-none dark:text-slate-200 sm:flex-1"
+        >
+          <option value="">All categories</option>
+          {JOB_CATEGORIES.map((cat) => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
 
-      <select
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        className="w-full rounded-lg bg-transparent px-2 py-2 text-sm text-slate-700 outline-none dark:text-slate-200 sm:w-56"
-      >
-        <option value="">All categories</option>
-        {JOB_CATEGORIES.map((cat) => (
-          <option key={cat} value={cat}>{cat}</option>
-        ))}
-      </select>
-
-      <button
-        type="submit"
-        className="w-full shrink-0 rounded-xl bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 sm:w-auto"
-      >
-        Search Jobs
-      </button>
+        <button
+          type="submit"
+          className="w-full shrink-0 rounded-full bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700 active:scale-95 sm:w-auto"
+        >
+          Search Jobs
+        </button>
+      </div>
     </form>
   );
 }

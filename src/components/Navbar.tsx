@@ -5,6 +5,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import ThemeToggle from "./ThemeToggle";
+import Seal from "./Seal";
 
 const links = [
   { href: "/jobs", label: "Find Jobs" },
@@ -18,11 +19,11 @@ export default function Navbar() {
   const { isAdmin, logout } = useAuth();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
+    <header className="sticky top-0 z-40 border-b border-brand-800/10 bg-mist/80 backdrop-blur dark:border-gold-300/10 dark:bg-ink/80">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2 text-xl font-bold text-brand-700 dark:text-brand-400">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white">M</span>
-          MyanmarJobs
+        <Link href="/" className="flex items-center gap-2.5 font-display text-xl font-bold tracking-tight text-brand-800 dark:text-mist">
+          <Seal size={30} />
+          Ktzeejobs.mm
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
@@ -44,7 +45,7 @@ export default function Navbar() {
               </Link>
               <button
                 onClick={() => logout()}
-                className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+                className="rounded-full border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700 dark:border-slate-700 dark:text-slate-200 dark:hover:border-brand-400 dark:hover:text-brand-300"
               >
                 Log out
               </button>
@@ -52,7 +53,7 @@ export default function Navbar() {
           ) : (
             <Link
               href="/login"
-              className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-700"
+              className="rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700 active:scale-95"
             >
               Admin Login
             </Link>

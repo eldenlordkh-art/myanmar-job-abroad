@@ -41,7 +41,7 @@ function AdminDashboard() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Admin Dashboard</h1>
-          <p className="mt-1 text-slate-500 dark:text-slate-400">Manage job postings on MyanmarJobs.</p>
+          <p className="mt-1 text-slate-500 dark:text-slate-400">Manage job postings on Ktzeejobs.mm.</p>
         </div>
         <Link
           href="/admin/jobs/new"

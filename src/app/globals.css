@@ -7,7 +7,12 @@ html {
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+  @apply bg-mist text-ink dark:bg-ink dark:text-mist;
+}
+
+*:focus-visible {
+  outline: 2px solid theme("colors.gold.500");
+  outline-offset: 2px;
 }
 
 .line-clamp-1 {
@@ -22,4 +27,38 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+@keyframes seal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-seal-spin {
+  animation: seal-spin 5s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-ticker {
+  animation: ticker-scroll 22s linear infinite;
+}
+
+.ticker-pause:hover .animate-ticker {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-seal-spin,
+  .animate-ticker {
+    animation: none;
+  }
 }

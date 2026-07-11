@@ -1,14 +1,15 @@
 import Link from "next/link";
+import Seal from "./Seal";
 
 export default function Footer() {
   return (
-    <footer className="mt-20 border-t border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950">
+    <footer className="mt-20 border-t border-brand-800/10 bg-mist dark:border-gold-300/10 dark:bg-ink">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           <div>
-            <div className="flex items-center gap-2 text-lg font-bold text-brand-700 dark:text-brand-400">
-              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-600 text-sm text-white">M</span>
-              MyanmarJobs
+            <div className="flex items-center gap-2 font-display text-lg font-bold text-brand-800 dark:text-mist">
+              <Seal size={26} />
+              Ktzeejobs.mm
             </div>
             <p className="mt-3 max-w-xs text-sm text-slate-600 dark:text-slate-400">
               Connecting talented professionals across Myanmar with the country&apos;s best employers.
@@ -16,7 +17,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Quick Links</h3>
+            <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-300">Quick Links</h3>
             <ul className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-400">
               <li><Link href="/jobs" className="hover:text-brand-600 dark:hover:text-brand-400">Find Jobs</Link></li>
               <li><Link href="/companies" className="hover:text-brand-600 dark:hover:text-brand-400">Companies</Link></li>
@@ -26,17 +27,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Contact</h3>
+            <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-300">Contact</h3>
             <ul className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-400">
-              <li>Yangon, Myanmar</li>
               <li>thazinpwintthu.tzpt@gmail.com</li>
-              <li>+95 9 000 000 000</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-8 border-t border-slate-200 pt-6 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-500">
-          © {new Date().getFullYear()} MyanmarJobs. All rights reserved.
+        <div className="mt-8 border-t border-brand-800/10 pt-6 text-center font-mono text-xs text-slate-500 dark:border-gold-300/10 dark:text-slate-500">
+          © {new Date().getFullYear()} Ktzeejobs.mm. All rights reserved.
         </div>
       </div>
     </footer>

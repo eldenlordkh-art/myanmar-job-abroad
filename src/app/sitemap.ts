@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getAllJobs } from "@/lib/jobs";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://myanmarjobs.example";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ktzeejobs.mm";
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${siteUrl}/`, changeFrequency: "daily", priority: 1 },

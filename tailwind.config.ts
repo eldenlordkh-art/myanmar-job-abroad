@@ -10,22 +10,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Jade — Myanmar's iconic export stone, standing in for the default SaaS blue.
         brand: {
-          50: "#eef7ff",
-          100: "#d9edff",
-          200: "#bce0ff",
-          300: "#8ecdff",
-          400: "#59b0ff",
-          500: "#3390ff",
-          600: "#1c6ff5",
-          700: "#1758e0",
-          800: "#1a48b5",
-          900: "#1b408e",
-          950: "#152a56"
-        }
+          50: "#EAF6F1",
+          100: "#CFEBE0",
+          200: "#A1D6C2",
+          300: "#6FBEA0",
+          400: "#45A483",
+          500: "#2C8A6B",
+          600: "#1F7159",
+          700: "#195C48",
+          800: "#164A3A",
+          900: "#123D30",
+          950: "#081F19"
+        },
+        // Gold leaf — the metal of temple gilding and lacquerware trim; used sparingly.
+        gold: {
+          50: "#FCF6E8",
+          100: "#F7E9C4",
+          200: "#EFD48D",
+          300: "#E3BB5E",
+          400: "#D2A03F",
+          500: "#B8862E",
+          600: "#8F6A22",
+          700: "#6E5119"
+        },
+        lac: "#9A3324",
+        ink: "#0B1F19",
+        mist: "#F4F7F3"
       },
       fontFamily: {
-        sans: ["Inter", "Noto Sans Myanmar", "system-ui", "sans-serif"]
+        display: ["var(--font-display)", "serif"],
+        sans: ["var(--font-body)", "var(--font-myanmar)", "system-ui", "sans-serif"],
+        mono: ["var(--font-data)", "ui-monospace", "monospace"]
       }
     }
   },

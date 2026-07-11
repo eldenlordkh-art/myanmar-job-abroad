@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Job } from "@/lib/types";
+import Seal from "./Seal";
 
 function timeAgo(ms: number): string {
   const diff = Date.now() - ms;
@@ -23,35 +24,39 @@ export default function JobCard({ job }: { job: Job }) {
   return (
     <Link
       href={`/jobs/${job.id}`}
-      className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+      className="group relative flex flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-brand-300 hover:shadow-lg dark:border-slate-800 dark:bg-brand-950 dark:hover:border-brand-700"
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-lg font-bold text-brand-700 dark:bg-brand-950 dark:text-brand-300">
-            {job.company.charAt(0).toUpperCase()}
-          </div>
-          <div>
-            <h3 className="line-clamp-1 font-semibold text-slate-900 group-hover:text-brand-600 dark:text-white dark:group-hover:text-brand-400">
-              {job.title}
-            </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">{job.company}</p>
+      {job.featured && (
+        <div className="absolute -right-2 -top-2 rotate-6 transition group-hover:rotate-0">
+          <div className="relative">
+            <Seal size={44} />
+            <span className="absolute inset-0 flex -rotate-6 items-center justify-center font-mono text-[7px] font-bold uppercase tracking-tight text-gold-100 transition group-hover:rotate-0">
+              Featured
+            </span>
           </div>
         </div>
-        {job.featured && (
-          <span className="shrink-0 rounded-full bg-amber-100 px-2.5 py-1 text-xs font-medium text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
-            Featured
-          </span>
-        )}
+      )}
+
+      <div className="flex items-center gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-lg font-bold text-brand-700 transition group-hover:scale-105 dark:bg-brand-900 dark:text-brand-300">
+          {job.company.charAt(0).toUpperCase()}
+        </div>
+        <div className="min-w-0">
+          <h3 className="line-clamp-1 font-display font-semibold text-slate-900 decoration-brand-400 decoration-2 underline-offset-4 group-hover:underline dark:text-white">
+            {job.title}
+          </h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{job.company}</p>
+        </div>
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-2 text-xs">
-        <span className="rounded-full bg-slate-100 px-2.5 py-1 font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+      <div className="mt-4 flex flex-wrap gap-1.5 font-mono text-xs">
+        <span className="rounded-full border border-brand-200 bg-brand-50 px-2.5 py-1 font-medium text-brand-700 dark:border-brand-800 dark:bg-brand-900/50 dark:text-brand-300">
           {job.location}
         </span>
-        <span className="rounded-full bg-slate-100 px-2.5 py-1 font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+        <span className="rounded-full border border-gold-200 bg-gold-50 px-2.5 py-1 font-medium text-gold-700 dark:border-gold-700/40 dark:bg-gold-700/10 dark:text-gold-300">
           {job.type}
         </span>
-        <span className="rounded-full bg-slate-100 px-2.5 py-1 font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+        <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 font-medium text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
           {job.category}
         </span>
       </div>
@@ -60,7 +65,7 @@ export default function JobCard({ job }: { job: Job }) {
         <span className="font-medium text-slate-700 dark:text-slate-200">
           {formatSalary(job.salaryMin, job.salaryMax)}
         </span>
-        <span className="text-xs text-slate-400 dark:text-slate-500">{timeAgo(job.createdAt)}</span>
+        <span className="font-mono text-xs text-slate-400 dark:text-slate-500">{timeAgo(job.createdAt)}</span>
       </div>
     </Link>
   );

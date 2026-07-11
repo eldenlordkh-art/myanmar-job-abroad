@@ -12,7 +12,7 @@ export default function ContactPage() {
     e.preventDefault();
     const subject = encodeURIComponent(`Message from ${name} via MyanmarJobs`);
     const body = encodeURIComponent(`${message}\n\nFrom: ${name} (${email})`);
-    window.location.href = `mailto:hello@myanmarjobs.example?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:thazinpwintthu.tzpt@gmail.com?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -32,7 +32,9 @@ export default function ContactPage() {
         <div className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Email</h3>
-            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">hello@myanmarjobs.example</p>
+            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+            
+            </p>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Phone</h3>
